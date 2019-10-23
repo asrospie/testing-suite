@@ -19,10 +19,10 @@ The test case creation seems tricky but is actually simple. In the created input
 Here is an example of a working setup:
 In the directory there is a RandomNumbers executable file. Lets say that RandomNumbers takes in four command line arguments, each a different integer. So the first test case may be something like 1 2 3 4. Take what the executable is expected to print out these four numbers in a random order. Take the expected order and place it in one.txt in the tests-suite/ directory.
  
-In inputs.in the first line should read:
+In inputs.in the first line should read:  
 one 1 2 3 4
 
-one.txt could contain the following:
+one.txt could contain the following:  
 3 4 2 1
 
 The final step is to run the tests. To do so, call suite.py with python3 and the desired flag name. In this case, RandomNumbers is an executable so we will use the c flag.
@@ -36,9 +36,9 @@ There are many improvements that could be made to make this better. I wrote this
 Pull requests are welcome and I will be updating this as I see fit.
 
 ## Langauges Currently Supported
-[x] C
-[ ] Java
-[ ] C++
-[ ] python
+[x] C  
+[ ] Java  
+[ ] C++  
+[ ] python  
 * More will be added if needed.
 
