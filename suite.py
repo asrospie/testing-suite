@@ -1,6 +1,7 @@
 import os
 from os.path import exists, isfile, join
 import sys
+from langtests.c_test import runCTests
 
 langFlags = {
     "-c": "Run tests for the C language, requires additional argument for executable",
@@ -26,7 +27,18 @@ def help(flag: str):
     if flag == "-h":
         printValidFlags()
     elif flag == "-r":
-        os.system("rm -r inputs.in test-suite/ *.test")
+        os.system("rm -r inputs.in test-suite/ langtests/ *.test")
+
+def test(flag: str, process: str):
+    failed = 0
+    # if flag is c, run c tests
+    if flag == "-c":
+        failed = runCTests(process)
+
+    if not failed:
+        print("---ALL TESTS PASSED---")
+    else:
+        print("---" + str(failed) + " TEST(S) HAVE FAILED---")
 
 def main():
     # check if there is more than one argument
@@ -55,5 +67,13 @@ def main():
         print("Help flags have no arguments.")
         return
         
+    # check to make sure langFlag has enough arguments
+    if flag in langFlags and length != 3:
+        print("Not enough arguments for language flag.")
+        return
+    elif flag in langFlags and length == 3:
+        test(flag, sys.argv[2])
+        return
+
     return
 main()

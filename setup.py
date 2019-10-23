@@ -18,6 +18,7 @@ def main():
 
     os.system("touch %sinputs.in" % (path))
     os.system("mkdir %stest-suite/" % (path))
-    os.system("cp utils/suite.py %ssuite.py" % (path))
+    os.system("cp suite.py %ssuite.py" % (path))
+    os.system("cp -r langtests/ %slangtests/" % (path))
 
 main()
